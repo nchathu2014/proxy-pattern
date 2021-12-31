@@ -6,6 +6,8 @@ import { useEffect } from "react";
 
 export default function App() {
   useEffect(() => {
+    personProxy.name;
+
     personProxy.name = "Nuwan";
     personProxy.age = 55;
     personProxy.nationality = "Canadian";

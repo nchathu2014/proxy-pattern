@@ -6,7 +6,7 @@ const person = {
 
 // Crate a proxy object
 
-const personProxy = new Proxy(person, {
+/* const personProxy = new Proxy(person, {
   get: (obj, key) => {
     //check for existance of properties
     if (!obj[key]) {
@@ -28,6 +28,17 @@ const personProxy = new Proxy(person, {
     }
     return true;
   }
+}); */
+
+//TODO: Have to do the validation of Keys
+const proxyWithReflect = new Proxy(person, {
+  get: (obj, key) => {
+    console.log(`The value of ${key} is ${Reflect.get(obj, key)}`);
+  },
+  set: (obj, key, value) => {
+    console.log(`Changed ${key} from ${obj[key]} to ${value}`);
+    return Reflect.set(obj, key, value);
+  }
 });
 
-export default personProxy;
+export default proxyWithReflect;
